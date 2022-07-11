@@ -1,0 +1,50 @@
+{
+    "devDependencies": {
+        "axios": "^0.26.1",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-router-dom": "^6.3.0",
+        "react-scripts": "5.0.0"
+    },
+    "author": "",
+    "license": "ISC",
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "dependencies": {
+        "express": "^4.17.3",
+        "os": "^0.1.2",
+        "qs": "^6.10.3",
+        "react-context": "^0.0.3",
+        "react-router": "^6.3.0",
+        "react-toastify": "^7.0.0",
+        "react-transition-group": "^4.4.2",
+        "styled-components": "^5.3.5",
+        "uniqid": "^5.4.0",
+        "uuid4": "^2.0.2",
+        "uuidv4": "^6.2.13",
+        "webpack": "^4.0.0"
+    },
+    "proxy": "http://127.0.0.1:5000"
+}

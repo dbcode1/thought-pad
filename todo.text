@@ -1,0 +1,12 @@
+- what happens when you come back to app after awhil
+-  finish account delete and
+
+validation password
+CSS:
+alternating colors for entries like post its
+variables for base styles 
+? seperate files for each compnents
+
+clear inout on submit
+submit should be a button now its a styled Input
+getEntries reloads the page--- look at the papers

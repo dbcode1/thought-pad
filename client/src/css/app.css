@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+.bodyClassName {
+    color: black !important;
+    font-size: 0.875rem !important;
+  }
+  .toastProgress {
+    background: #333F48 !important;
+  }
+
+  .Toastify__toast {
+    color: black
+  }
+
+  .Toastify__toast-body {
+    border-radius: 0;
+  }
+
+  .Toastify__progress-bar--rtl {
+    color:black
+  }
+
+:root{
+    --main-font-size: 20px;
+    --main-font-family: 'Courier', sans-serif;
+    --main-font-color: black;
+    --Main-background-color: whitesmoke;
+}
+
+body {
+  background-color: var(--Main-background-color)
+}

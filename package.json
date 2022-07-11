@@ -1,0 +1,18 @@
+{
+    "name": "account",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "start": "concurrently \"cd client && npm run start\" \"cd server && nodemon server.js\""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "concurrently": "^7.1.0",
+      "nodemon": "^2.0.15",
+      "os-browserify": "^0.3.0",
+      "salt": "^0.5.5"
+    }
+}
