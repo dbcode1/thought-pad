@@ -1,27 +1,27 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Context } from "../Context";
+import { getEntries } from "./UserApp";
 import styled from "styled-components";
 import uniqid from "uniqid";
-import {Button} from "../css/buttons"
+import { Button } from "../css/buttons";
 
 const token = localStorage.getItem("token");
 
 const EntriesContainer = styled("div")`
-  height: 600px;
   display: grid;
 `;
 
 const Card = styled("li")`
-  display: inline-block;
-  margin: auto;
   list-style: none;
   font-family: courier;
   font-weight: bold;
   padding: 10px;
-  box-shadow: 0px 2px 8px -4px grey;
-  padding: 12px;
-  margin: 8px 0;
+`;
+
+const CardContainer = styled("div")`
+  text-align: center;
+  width: 100%;
 `;
 
 const DeleteEntry = styled("span")`
@@ -29,14 +29,11 @@ const DeleteEntry = styled("span")`
   margin-left: 8px;
   cursor: pointer;
 `;
-
-const ListWrapper = styled('div')`
+const Container = styled("div")``;
+const ListWrapper = styled("ul")`
   display: grid;
-  grid-auto-column: auto;
-  Card {
-    grid-column: 2 / -1;
-  }
-`
+  grid-template-areas: list list list;
+`;
 
 export function List(props) {
   const { data, setData } = useContext(Context);
@@ -46,27 +43,34 @@ export function List(props) {
     console.log("handle entires", entries);
   }, [entries]);
 
-  // grab id from thought
-  async function deleteEntry(e) {
-    console.log("delete entry");
-    e.preventDefault();
-    const id = e.target.id;
-    console.log("entry id", id);
-    const data = {
-      token: token,
-      id: id,
-    };
+  async function getEntries() {
     await axios
-      .delete("/user/delete", { data })
-      .then((res) => {
-        const returnId = res.data
-        console.log("returnId", res.data)
-        setData({entries: res.data.entries})
-        // getDeletedEntries()
+      .post("/user/entries/user", { token })
+      .then((res, req) => {
+        console.log("entries", res.data);
+        setData({ entries: res.data, thought: "" });
       })
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  // delete entry
+  async function handleDelete(e) {
+    const title = e.target.parentNode.childNodes[0].innerHTML;
+    console.log("delete token", token);
+    const response = await axios.post("user/delete", { title, token });
+    if (response.status === 200) {
+      setData({
+        ...data,
+        entry: "",
+        entries: entries.filter((entry) => entry !== title),
+      });
+      console.log(entries);
+      getEntries();
+    } else {
+      console.log("delete error");
+    }
   }
 
   return (
@@ -74,10 +78,11 @@ export function List(props) {
       {entries.length > 0 &&
         entries.map((entry) => {
           return (
-            <Card id={entry._id} key={uniqid()} onClick={deleteEntry}>
-              {entry.text}
-            
-            </Card>
+            <CardContainer>
+              <Card id={uniqid()} onClick={(e) => handleDelete(e)}>
+                {entry.text}
+              </Card>
+            </CardContainer>
           );
         })}
     </>

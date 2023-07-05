@@ -33,7 +33,10 @@
         ]
     },
     "dependencies": {
+        "crypto": "^1.0.1",
+        "dotenv": "^16.3.1",
         "express": "^4.17.3",
+        "jsonwebtoken": "^9.0.0",
         "os": "^0.1.2",
         "qs": "^6.10.3",
         "react-context": "^0.0.3",

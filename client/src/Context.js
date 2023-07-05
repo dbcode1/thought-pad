@@ -10,7 +10,7 @@ export const ContextProvider = ({ children }) => {
     isAuthenticated: false,
     loading: false,
     alert: false,
-    entry: "",
+    thought: "",
     entries: [""],
   };
 
